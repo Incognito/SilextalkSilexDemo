@@ -7,6 +7,6 @@ use Silex\Application;
 
 $app = new Application();
 
-$app->mount('/', new MailerControllerProvider());
+$app->mount('/', new MailerControllerProvider($app));
 
 $app->run();

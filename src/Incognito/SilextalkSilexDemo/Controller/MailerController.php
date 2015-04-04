@@ -3,30 +3,25 @@
 namespace Incognito\SilextalkSilexDemo\Controller;
 
 use Silex\Application;
+use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class MailerController
 {
-   public function __construct()
-   {
-       // Nothing to inject
-   }
+    public function composeAction(Application $app) {
+          // TODO add twig
 
-   public function composeAction(Application $app)  {
-        // TODO add twig
+          return new Response('Html content', 200);
+    }
 
-        return new Response('Html content', 200);
-   }
+    public function sendAction(Application $app, Request $request) {
+          $urlGenerator = $app['url_generator'];
 
-   public function sendAction(Request $request) {
-        //$message = $request->get('body');
+          //$message = $request->get('body');
 
-        // TODO send email
+          // TODO send email
 
-        // TODO redirect
-
-        return new Response('Sent', 201);
-   }
+          return $app->redirect($urlGenerator->generate('mailer_compose'));
+    }
 }
-

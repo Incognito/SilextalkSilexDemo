@@ -19,7 +19,8 @@ class MailControllerTest extends WebTestCase
         $client = $this->createClient();
         $crawler = $client->request('POST', '/send');
 
-        $this->assertEquals(201, $client->getResponse()->getStatusCode());
+        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isRedirect('/compose'));
     }
 
     public function createApplication()
