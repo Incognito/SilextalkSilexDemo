@@ -3,7 +3,9 @@
         "psr-4": { "Incognito\\SilextalkSilexDemo\\": "src/Incognito/SilextalkSilexDemo" }
     },
     "require": {
-        "silex/silex": "~1.2"
+        "silex/silex": "~1.2",
+        "symfony/twig-bridge": "~2.6",
+        "twig/twig": "~1.18"
     },
     "require-dev": {
         "symfony/browser-kit": "~2.6"

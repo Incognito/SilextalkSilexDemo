@@ -12,6 +12,7 @@ class MailControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/compose');
 
         $this->assertTrue($client->getResponse()->isOk());
+        $this->assertRegexp('/Placeholder/', $client->getResponse()->getContent());
     }
 
     public function testSendingPage()

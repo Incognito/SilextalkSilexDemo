@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 class MailerController
 {
     public function composeAction(Application $app) {
-          // TODO add twig
+          $twig = $app['twig'];
 
-          return new Response('Html content', 200);
+          return new Response($twig->render('compose.html.twig'));
     }
 
     public function sendAction(Application $app, Request $request) {
