@@ -1,4 +1,7 @@
 {
+    "autoload": {
+        "psr-4": { "Incognito\\SilextalkSilexDemo\\": "src/Incognito/SilextalkSilexDemo" }
+    },
     "require": {
         "silex/silex": "~1.2"
     },

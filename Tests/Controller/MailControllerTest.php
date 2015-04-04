@@ -24,7 +24,7 @@ class MailControllerTest extends WebTestCase
 
     public function createApplication()
     {
-        require __DIR__.'/../../app.php';
+        require __DIR__.'/../../app/app.php';
         $app['debug'] = true;
         $app['exception_handler']->disable();
         $app;
