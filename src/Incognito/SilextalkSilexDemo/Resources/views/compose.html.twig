@@ -1,1 +1,20 @@
-Placeholder.
+{% extends "common/base.html.twig" %}
+{% block content %}
+    <h1>Lets write an email...</h1>
+    <form action="{{ path('mailer_send') }}" method="POST">
+       <label>
+          <p>To: </p>
+          <input type="email" name="email" />
+       </label>
+       <label>
+          <p>Subject:</p>
+          <input type="text" name="subject" />
+       </label>
+       <label>
+          <p>Body:</p>
+          <textarea name="body" cols="128" rows="30"/>
+       </label>
+       <br/>
+       <input type="submit" value="Send">
+    </form>
+{% endblock %}

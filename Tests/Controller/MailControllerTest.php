@@ -12,13 +12,22 @@ class MailControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/compose');
 
         $this->assertTrue($client->getResponse()->isOk());
-        $this->assertRegexp('/Placeholder/', $client->getResponse()->getContent());
+        $this->assertRegexp('/Lets write an email/', $client->getResponse()->getContent());
     }
 
-    public function testSendingPage()
+    public function testComposePageSubmission()
     {
         $client = $this->createClient();
-        $crawler = $client->request('POST', '/send');
+        $crawler = $client->request('GET', '/compose');
+
+        // select the form and fill in some values
+        $form = $crawler->selectButton('Send')->form();
+        $form['email'] = 'foo@example.com'; // PLEASE only ever use example.com, it is reserved by RFC2606 for this reason
+        $form['subject'] = 'This is a test subject.';
+        $form['body'] = 'Testing body';
+        
+        // submit that form
+        $crawler = $client->submit($form);
 
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/compose'));
