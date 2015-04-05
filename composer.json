@@ -1,4 +1,14 @@
 {
+    "minimum-stability": "dev",
+    "name": "incognito/silextalk-silex-demo",
+    "description": "This is a repo used as sample code for a talk about silex",
+    "license": "MIT",
+    "authors": [
+        {
+          "name": "Brian Graham",
+          "email": "drakain@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": { "Incognito\\SilextalkSilexDemo\\": "src/Incognito/SilextalkSilexDemo" }
     },
