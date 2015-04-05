@@ -10,26 +10,23 @@ use Symfony\Component\HttpFoundation\Response;
 class MailerController
 {
     public function composeAction(Application $app) {
-          $twig = $app['twig'];
+        $twig = $app['twig'];
 
-          return new Response($twig->render('compose.html.twig'));
+        return new Response($twig->render('compose.html.twig'));
     }
 
     public function sendAction(Application $app, Request $request)
     {
-          $urlGenerator = $app['url_generator'];
-          $emailFactory = $app['email_factory'];
+        $emailMessage = $app['email_factory']::createFromRequest($request);
 
-          $emailMessage = $emailFactory::createFromRequest($request);
+        $validationErrors = $app['validator']->validate($emailMessage);
 
-          $validationErrors = $app['validator']->validate($emailMessage);
+        if ($validationErrors->count() > 0) {
+            return new Response("Nope. That's not valid.", 400);
+        }
 
-          if ($validationErrors->count() > 0) {
-              return new Response("Nope. That's not valid.", 400);
-          }
+        $app['mailer.mailer']->send($emailMessage);
 
-          // TODO send email
-
-          return $app->redirect($urlGenerator->generate('mailer_compose'));
+        return $app->redirect($app['url_generator']->generate('mailer_compose'));
     }
 }
