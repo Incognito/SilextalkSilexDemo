@@ -15,10 +15,12 @@ class MailerController
           return new Response($twig->render('compose.html.twig'));
     }
 
-    public function sendAction(Application $app, Request $request) {
+    public function sendAction(Application $app, Request $request)
+    {
           $urlGenerator = $app['url_generator'];
+          $emailFactory = $app['email_factory'];
 
-          //$message = $request->get('body');
+          $email = $emailFactory::createFromRequest($request);
 
           // TODO send email
 

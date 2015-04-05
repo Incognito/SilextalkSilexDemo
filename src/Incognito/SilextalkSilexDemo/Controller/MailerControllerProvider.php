@@ -2,14 +2,16 @@
 
 namespace Incognito\SilextalkSilexDemo\Controller;
 
+use Incognito\SilextalkSilexDemo\Provider\EmailMessageProvider;
 use Silex\Application;
 use Silex\ControllerProviderInterface;
-use Silex\Provider\UrlGeneratorServiceProvider;
 use Silex\Provider\TwigServiceProvider;
+use Silex\Provider\UrlGeneratorServiceProvider;
 
 class MailerControllerProvider implements ControllerProviderInterface
 {
     public function __construct(Application $app) {
+        $app->register(new EmailMessageProvider());
         $app->register(new UrlGeneratorServiceProvider());
         $app->register(new TwigServiceProvider(), array(
             'twig.path' => __DIR__.'/../Resources/views',
