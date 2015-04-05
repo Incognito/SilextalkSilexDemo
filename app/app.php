@@ -2,11 +2,13 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-use Incognito\SilextalkSilexDemo\Controller\MailerControllerProvider;
 use Silex\Application;
+use Incognito\SilextalkSilexDemo\SilextalkSilexDemoServiceRegistry;
 
 $app = new Application();
 
-$app->mount('/', new MailerControllerProvider($app));
+SilextalkSilexDemoServiceRegistry::boot($app);
+
+$app->mount('/', $app['mailer.controller']);
 
 $app->run();
