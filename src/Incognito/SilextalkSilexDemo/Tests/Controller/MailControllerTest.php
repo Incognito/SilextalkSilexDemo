@@ -15,7 +15,7 @@ class MailControllerTest extends WebTestCase
         $this->assertRegexp('/Lets write an email/', $client->getResponse()->getContent());
     }
 
-    public function testComposePageSubmission()
+    public function testComposePageSubmissionSuccess()
     {
         $client = $this->createClient();
         $crawler = $client->request('GET', '/compose');
@@ -31,6 +31,23 @@ class MailControllerTest extends WebTestCase
 
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
         $this->assertTrue($client->getResponse()->isRedirect('/compose'));
+    }
+    
+    public function testComposePageSubmissionFailure()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/compose');
+
+        // select the form and fill in some values
+        $form = $crawler->selectButton('Send')->form();
+        $form['email'] = 'foobademail';
+        $form['subject'] = '';
+        $form['body'] = '';
+        
+        // submit that form
+        $crawler = $client->submit($form);
+
+        $this->assertEquals(400, $client->getResponse()->getStatusCode());
     }
 
     public function createApplication()

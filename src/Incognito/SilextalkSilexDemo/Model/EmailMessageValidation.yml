@@ -1,0 +1,12 @@
+Incognito\SilextalkSilexDemo\Model\EmailMessage:
+    getters:
+        toAddress:
+            - NotNull: ~
+            - NotBlank: ~
+            - Email:
+                strict: true
+        subject:
+            - NotNull: ~
+        body:
+            - NotNull: ~
+            - NotBlank: ~

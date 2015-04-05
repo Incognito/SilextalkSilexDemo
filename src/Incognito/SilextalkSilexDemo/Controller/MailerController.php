@@ -20,7 +20,13 @@ class MailerController
           $urlGenerator = $app['url_generator'];
           $emailFactory = $app['email_factory'];
 
-          $email = $emailFactory::createFromRequest($request);
+          $emailMessage = $emailFactory::createFromRequest($request);
+
+          $validationErrors = $app['validator']->validate($emailMessage);
+
+          if ($validationErrors->count() > 0) {
+              return new Response("Nope. That's not valid.", 400);
+          }
 
           // TODO send email
 

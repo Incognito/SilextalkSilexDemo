@@ -2,9 +2,9 @@
 
 namespace Incognito\SilextalkSilexDemo\Provider;
 
+use Incognito\SilextalkSilexDemo\Model\EmailMessageFactory;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Incognito\SilextalkSilexDemo\Model\EmailMessageFactory;
 
 class EmailMessageProvider implements ServiceProviderInterface
 {

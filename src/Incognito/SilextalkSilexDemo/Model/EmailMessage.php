@@ -25,4 +25,16 @@ class EmailMessage
         $this->subject = $subject;
         $this->body = $body;
     }
+
+    public function getToAddress(){
+        return $this->toAddress;
+    }
+
+    public function getSubject(){
+        return $this->subject;
+    }
+
+    public function getBody(){
+        return $this->body;
+    }
 }
