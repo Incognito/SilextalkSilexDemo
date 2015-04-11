@@ -17,7 +17,10 @@ class MailerController
 
     public function sendAction(Application $app, Request $request)
     {
-        $emailMessage = $app['email_factory']::createFromRequest($request);
+        $address = $request->get('email');
+        $subject = $request->get('subject');
+        $body = $request->get('body');
+        $emailMessage = $app['email_factory']::createEmail($address, $subject, $body);
 
         $validationErrors = $app['validator']->validate($emailMessage);
 
