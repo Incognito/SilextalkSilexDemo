@@ -1,4 +1,4 @@
-Incognito\SilextalkSilexDemo\Model\EmailMessage:
+Incognito\SilextalkBase\Model\EmailMessage:
     getters:
         toAddress:
             - NotNull: ~

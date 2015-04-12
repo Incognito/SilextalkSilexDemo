@@ -23,7 +23,6 @@ class MailerController
         $emailMessage = $app['email_factory']::createEmail($address, $subject, $body);
 
         $validationErrors = $app['validator']->validate($emailMessage);
-
         if ($validationErrors->count() > 0) {
             return new Response("Nope. That's not valid.", 400);
         }

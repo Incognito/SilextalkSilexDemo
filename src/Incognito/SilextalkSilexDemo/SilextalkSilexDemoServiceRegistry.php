@@ -2,9 +2,9 @@
 
 namespace Incognito\SilextalkSilexDemo;
 
+use Incognito\SilextalkBase\Model\Mailer;
+use Incognito\SilextalkBase\Provider\EmailMessageProvider;
 use Incognito\SilextalkSilexDemo\Controller\MailerControllerProvider;
-use Incognito\SilextalkSilexDemo\Provider\EmailMessageProvider;
-use Incognito\SilextalkSilexDemo\Model\Mailer;
 use Silex\Application;
 use Silex\Provider\SwiftmailerServiceProvider;
 use Silex\Provider\TwigServiceProvider;
@@ -49,7 +49,7 @@ class SilextalkSilexDemoServiceRegistry
         });
 
         $app['validator.mapping.class_metadata_factory'] = new ClassMetadataFactory(
-            new YamlFileLoader(__DIR__.'/Model/validation.yml')
+            new YamlFileLoader(__DIR__.'/Resources/config/validation.yml')
         );
     }
 }

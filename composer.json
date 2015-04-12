@@ -16,12 +16,15 @@
         "silex/silex": "~1.2",
         "symfony/twig-bridge": "~2.6",
         "twig/twig": "~1.18",
-        "symfony/yaml": "~2.6",
-        "symfony/validator": "~2.6",
-        "egulias/email-validator": "~1.2",
-        "swiftmailer/swiftmailer": "~5.4"
+        "incognito/silextalk-base": "~0.1"
     },
     "require-dev": {
         "symfony/browser-kit": "~2.6"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Incognito/SilextalkBase"
+        }
+    ]
 }
